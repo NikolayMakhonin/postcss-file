@@ -68,7 +68,7 @@ export default postcss.plugin<PostcssFileOptions>('postcss-file', (options): Tra
 
 		return function(root) {
 
-			root.walkDecls(/(background|src)/, function(decl) {
+			root.walkDecls(/(background|src|mask|^--)/, function(decl) {
 				// do nothing if this declaration is already have been handled
 				if ((decl as any).handled) {
 					return;

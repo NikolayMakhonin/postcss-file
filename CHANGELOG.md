@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file. See [standa
 * fix handle assets repetitively error ([6cc8cc9](https://github.com/DongShelton/postcss-file/commit/6cc8cc9))
 * fix multiple url value ([5042bdc](https://github.com/DongShelton/postcss-file/commit/5042bdc))
 * fix url regexp(without quote) ([9e4899b](https://github.com/DongShelton/postcss-file/commit/9e4899b))
+* added support css masks and variables
 
 
 ### Features

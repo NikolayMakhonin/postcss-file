@@ -1,6 +1,6 @@
 {
-  "name": "postcss-file",
-  "version": "0.1.1",
+  "name": "@flemist/postcss-file",
+  "version": "0.1.5",
   "description": "PostCSS plugin for handle assets",
   "main": "dist/index.js",
   "keywords": [
