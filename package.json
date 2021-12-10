@@ -1,6 +1,6 @@
 {
   "name": "@flemist/postcss-file",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "PostCSS plugin for handle assets",
   "main": "dist/index.js",
   "keywords": [
@@ -26,7 +26,8 @@
     "changelog": "./node_modules/.bin/standard-version",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "prepublishOnly": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/DongShelton/postcss-file/issues",
