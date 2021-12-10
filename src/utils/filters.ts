@@ -44,6 +44,8 @@ export interface ShouldHandleOptions {
  */
 export const shouldHandle = (options: ShouldHandleOptions): boolean => {
 	switch (true) {
+		case /^https?:\/\//i.test(options.file):
+			return false;
 		case options.include && !fileFilter(options.include, options.file):
 			return false;
 		case options.extensions && !extFilter(options.extensions, options.file):
