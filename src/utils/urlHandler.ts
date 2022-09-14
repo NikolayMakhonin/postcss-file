@@ -67,7 +67,7 @@ export const handleAsset = (options: AssetHandlerOptions): string => {
 				}
 				return url;
 			} else {
-				return (options.assetsPathPrefix || '') + path.resolve('/', options.assetsPath as string, filename + search);
+				return (options.assetsPathPrefix || '') + path.resolve(options.assetsPath as string, filename + search);
 			}
 		// insert the asset as a inline base64 code
 		case 'inline':
