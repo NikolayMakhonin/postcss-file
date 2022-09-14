@@ -45,6 +45,12 @@ export interface PostcssFileOptions extends Object {
    * @description where the assets should be copy to.
    */
 	assetsPath?: string;
+	assetsPathPrefix?: string;
+	/**
+   * @default undefined
+   * @description if specified calc relative paths to the assets
+   */
+	relativeSrc?: string;
 	/**
    * @default undefined
    * @description the prefix of output url

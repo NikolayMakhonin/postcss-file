@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import * as mkdirp from 'mkdirp';
+import urlJoin from 'url-join';
 
 // the root directory
 const rootDir = process.cwd();
@@ -57,9 +58,16 @@ export const handleAsset = (options: AssetHandlerOptions): string => {
 			const assetsPath = path.resolve(rootDir, options.assetsPath as string);
 			const filename = copyAsset(assetPath, assetsPath, data, options.hash);
 			if (options.publicPath) {
-				return options.publicPath + filename;
+				let url = options.publicPath + filename;
+				if (options.relativeSrc) {
+					url = path.relative(
+						path.dirname(options.importer),
+						path.resolve(options.relativeSrc, url)
+					).replace(/\\/g, '/');
+				}
+				return url;
 			} else {
-				return path.resolve('/', options.assetsPath as string, filename + search);
+				return (options.assetsPathPrefix || '') + path.resolve('/', options.assetsPath as string, filename + search);
 			}
 		// insert the asset as a inline base64 code
 		case 'inline':

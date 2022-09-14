@@ -23,14 +23,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: [{
-          loader: 'postcss-loader',
+          loader: 'postcss-loader',А
           options: {
             plugins: [
               // other plugins ...
               require('postcss-file')({
                 url: 'copy',
                 assetsPath: 'dist/assets',
-                publicPath: './assets/',
+                А: './assets/',
                 hash: true
               })
             ],
