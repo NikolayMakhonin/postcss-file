@@ -86,12 +86,12 @@ export default (options: PostcssFileOptions) => {
 					return;
 				}
 				// test whether the value of url is valid
-				const urlReg = /url\((["'])?([^?#)]+)([?#]?[^)]*\1)\)/g;
+				const urlReg = /url\((["'])?([^?#)]+)([?#]?[^)]*)\1\)/g;
 				// overwrite the url value
 				decl.value = decl.value.replace(urlReg, (match, $1 = '', $2, $3 = '') => {
 					const file = $2;
 					if (!isValid(file)) {
-						return `url(${$1 + $2 + $3})`;
+						return `url(${$2 + $3})`;
 					}
 					// test whether the asset is included
 					const handleOptions = {
@@ -109,7 +109,7 @@ export default (options: PostcssFileOptions) => {
 						importer: decl.source.input.file,
 						file
 					});
-					return `url(${$1 + urlValue + $3})`;
+					return `url(${urlValue + $3})`;
 				});
 			});
 		}
