@@ -77,7 +77,7 @@ describe('Test copy option', () => {
 		const filePath = path.resolve(path.dirname(options.importer), options.file);
 		const destPath = path.resolve(process.cwd(), options.assetsPath, filename);
 		const assetsFolder = path.dirname(destPath);
-		const overidePath = path.resolve('/', options.assetsPath, filename);
+		const overidePath = path.resolve(options.assetsPath, filename);
 		mockReadFileSync.mockReturnValue(buffer);
 		mockExistsSync.mockReturnValue(false);
 

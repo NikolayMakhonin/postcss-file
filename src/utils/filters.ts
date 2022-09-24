@@ -22,7 +22,11 @@ const extFilter = (exts: string[], file: string): boolean => {
 const fileFilter = (files: string[], file: string): boolean => {
 	const rootDir = process.cwd();
 	const regs = files.map<RegExp>((value: string): RegExp => {
-		const regStr = path.resolve(rootDir, value).replace(/\*\*/g, '.+?').replace(/\*/g, '[^\/]+?');
+		const regStr = path
+			.resolve(rootDir, value)
+			.replace(/\\/g, '[\\\\/]')
+			.replace(/\*/g, '[^\/]+?')
+			.replace(/\*/g, '[^\/]+?');
 		return new RegExp(regStr);
 	});
 	return regs.some((value: RegExp) => {

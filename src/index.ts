@@ -1,6 +1,4 @@
-import * as postcss from 'postcss';
 import isValid from 'is-valid-path';
-import { Transformer } from 'postcss';
 import { shouldHandle } from './utils/filters';
 import { handleAsset } from './utils/urlHandler';
 import { validateOptions } from './utils/validators';
@@ -63,18 +61,20 @@ export interface PostcssFileOptions extends Object {
 	hash?: boolean;
 }
 
-export default postcss.plugin<PostcssFileOptions>('postcss-file', (options): Transformer => {
-		// it would throw error if options is invalid.
-		validateOptions(options);
-		// initialize options
-		const opts: PostcssFileOptions =
-			options && Object.prototype.isPrototypeOf(options) ? options : {
-				url: 'inline'
-			};
+export default (options: PostcssFileOptions) => {
+	// it would throw error if options is invalid.
+	validateOptions(options);
+	// initialize options
+	const opts: PostcssFileOptions =
+		options && Object.prototype.isPrototypeOf(options) ? options : {
+			url: 'inline'
+		};
 
-		return function(root) {
+	return {
+		postcssPlugin: 'postcss-file',
 
-			root.walkDecls(/(background|src|mask|^--)/, function(decl) {
+		Root(root: any) {
+			root.walkDecls(/(background|src|mask|^--)/, function(decl: any) {
 				// do nothing if this declaration is already have been handled
 				if ((decl as any).handled) {
 					return;
@@ -112,6 +112,6 @@ export default postcss.plugin<PostcssFileOptions>('postcss-file', (options): Tra
 					return `url(${$1 + urlValue + $3})`;
 				});
 			});
-		};
-	}
-);
+		}
+	};
+};

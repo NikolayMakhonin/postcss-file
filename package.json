@@ -1,6 +1,6 @@
 {
   "name": "@flemist/postcss-file",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "description": "PostCSS plugin for handle assets",
   "main": "dist/index.js",
   "keywords": [
@@ -34,11 +34,13 @@
     "email": "dongxu2048@gmail.com"
   },
   "homepage": "https://github.com/DongShelton/postcss-file",
+  "peerDependencies": {
+    "postcss": ">=8"
+  },
   "dependencies": {
     "chalk": "^2.3.1",
     "is-valid-path": "^0.1.1",
     "mkdirp": "^0.5.1",
-    "postcss": "^6.0.16",
     "url-join": "=4.0.1"
   },
   "devDependencies": {
@@ -50,6 +52,7 @@
     "@types/url-join": "^4.0.1",
     "jest": "^23.6.0",
     "pre-commit": "^1.2.2",
+    "postcss": "^8.4.16",
     "rollup": "^0.54.1",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-commonjs": "^8.2.6",
